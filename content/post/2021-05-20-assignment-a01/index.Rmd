@@ -27,7 +27,7 @@ titanic_train
 ```
 ## Categorical data visualization for variable Survived
 * Here the variable Survived describes Passenger Survival Indicator.I will create a histogram to show the count of Passenger Survived according to their Sex.
-```{r warning= FALSE, echo= FALSE}
+```{r warning= FALSE, echo= FALSE, message=FALSE}
 library(ggplot2)
 library(dplyr)
 total_survived <- titanic_train %>%
