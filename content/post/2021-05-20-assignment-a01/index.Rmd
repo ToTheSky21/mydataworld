@@ -1,0 +1,26 @@
+---
+title: Assignment A01
+author: TaranaTajninIslam
+date: '2021-05-20'
+slug: assignment-a01
+categories:
+  - ggplot2
+tags: []
+---
+# Titanic (titanic_train) Data Visualization
+titanic is an R package containing data sets providing information on the fate of passengers on the fatal maiden voyage of the ocean liner "Titanic", summarized according to passengerID, survival status, economic status (class), sex, age, name etc. The titanic_train data frame does not contain information from the crew, but it does contain actual ages of half of the passengers.
+```{r}
+library(titanic)
+titanic_train
+```
+## Categorical data visualization for variable Survived (Passenger Survival Indicator)
+```{r warning= FALSE}
+library(ggplot2)
+ggplot(titanic_train, aes(x = Survived, fill = Sex)) +
+  geom_bar(position = "dodge", alpha = 0.6) +
+  labs(title = "Passenger Survived by Sex")
+```
+
+
+
+
