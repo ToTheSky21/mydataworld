@@ -32,14 +32,14 @@ ggplot(titanic_train, aes(x = Survived, fill = Sex)) +
 ```
 ## Categorical data visualization for variable Pclass and Age
 * I will plot class of passengers according to their age in years.
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo= FALSE}
 library(ggplot2)
 ggplot(titanic_train, aes(Pclass, Age)) +
   geom_point(alpha = 0.6, position = "jitter", color = "blue")
 ```
 ### Numerical data visualization for variable Fare
 * Here the variable Fare means Passenger Fare, which is a numerical, discrete variable.In this visualization I will show the histogram, and some measures of numerical distribution.   
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo= FALSE}
 library(ggplot2)
 ggplot(titanic_train, aes(x = Fare)) +
   geom_histogram(binwidth = 50) +
@@ -51,7 +51,7 @@ ggplot(titanic_train, aes(x = Fare)) +
 ```
 * Now, I will fill this numerical variable with the categorical variable, Pclass
 that describes Passenger Class, to understand the relation with these two variables.
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo= FALSE}
 library(ggplot2)
 ggplot(titanic_train, aes(x = Fare, fill = Pclass)) +
   geom_histogram(binwidth = 50, position = "dodge", 
@@ -64,7 +64,7 @@ ggplot(titanic_train, aes(x = Fare, fill = Pclass)) +
   facet_wrap(~ Pclass, nrow = 3)
 ```
 * Over here I will show the density plot for the variable Fare that describes Passenger Fare and is a numerical variable of discrete data type. 
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo= FALSE}
 library(ggplot2)
 ggplot(titanic_train, aes(x = Fare)) +
   geom_density(adjust = 0.5) +
@@ -76,10 +76,8 @@ ggplot(titanic_train, aes(x = Fare)) +
 ```
 ### Numerical data visualization for variable SibSp and Parch
 * Over here the variable SibSp presents the Number of Siblings/Spouses Aboard and Parch represents the Number of Parents/Children Aboard.I will plot these variables and try to observe the finding.
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo= FALSE}
 ggplot(titanic_train, aes(x = SibSp, y = Parch, color = Sex)) +
-  geom_point(position = "jitter", alpha = 0.6) 
+  geom_point(position = "jitter", alpha = 0.6) + facet_wrap(~Sex, nrow = 2) 
 ```
-
-
 

@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">96 min read</span>
+    <span class="article-duration">97 min read</span>
     
 
     <h1 class="article-title">Assignment A01</h1>
@@ -78,7 +78,15 @@
 
 <div id="titanic-titanic_train-data-visualization" class="section level1">
 <h1>Titanic (titanic_train) Data Visualization</h1>
-<p>titanic is an R package containing data sets providing information on the fate of passengers on the fatal maiden voyage of the ocean liner “Titanic”, summarized according to passengerID, survival status, economic status (class), sex, age, name etc. The titanic_train data frame does not contain information from the crew, but it does contain actual ages of half of the passengers.</p>
+<p>*Short story behind the data sets
+The sinking of the Titanic is one of the most infamous shipwrecks in history.</p>
+<p>On April 15, 1912, during her maiden voyage, the widely considered “unsinkable” RMS Titanic sank after colliding with an iceberg. Unfortunately, there weren’t enough lifeboats for everyone onboard, resulting in the death of 1502 out of 2224 passengers and crew.</p>
+<ul>
+<li><p>Data at a glance
+Titanic is an R package containing data sets,titanic_train and titanic_test. In this blog I will use titanic_train data sets that provides information on the fate of passengers on the fatal maiden voyage of the ocean liner “Titanic”, including variables PassengerId, Survived, Pclass, Name, Sex, Age, SibSp, Parch, Ticket, Fare, Cabin, and Embarked.</p></li>
+<li><p>Data Analysis
+In this blog I will perform some exploratory data analysis and visualization using ggplot.</p></li>
+</ul>
 <pre class="r"><code>library(titanic)
 titanic_train</code></pre>
 <pre><code>##     PassengerId Survived Pclass
@@ -3649,18 +3657,26 @@ titanic_train</code></pre>
 ## 889        S
 ## 890        C
 ## 891        Q</code></pre>
-<div id="categorical-data-visualization-for-variable-survived-passenger-survival-indicator" class="section level2">
-<h2>Categorical data visualization for variable Survived (Passenger Survival Indicator)</h2>
+<div id="categorical-data-visualization-for-variable-survived" class="section level2">
+<h2>Categorical data visualization for variable Survived</h2>
 <ul>
-<li>I will create a histogram to show the count of Passenger Survived according to their Sex.
+<li>Here the variable Survived describes Passenger Survival Indicator.I will create a histogram to show the count of Passenger Survived according to their Sex.
 <img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
-## Categorical data visualization for variable Fare and Age</li>
-<li>I will plot fare of passengers according to their age.</li>
+## Categorical data visualization for variable Pclass and Age</li>
+<li>I will plot class of passengers according to their age in years.
+<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+### Numerical data visualization for variable Fare</li>
+<li>Here the variable Fare means Passenger Fare, which is a numerical, discrete variable.In this visualization I will show the histogram, and some measures of numerical distribution.<br />
+<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></li>
+<li>Now, I will fill this numerical variable with the categorical variable, Pclass
+that describes Passenger Class, to understand the relation with these two variables.
+<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></li>
+<li>Over here I will show the density plot for the variable Fare that describes Passenger Fare and is a numerical variable of discrete data type.
+<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+### Numerical data visualization for variable SibSp and Parch</li>
+<li>Over here the variable SibSp presents the Number of Siblings/Spouses Aboard and Parch represents the Number of Parents/Children Aboard.I will plot these variables and try to observe the finding.
+<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></li>
 </ul>
-<pre class="r"><code>library(ggplot2)
-ggplot(titanic_train, aes(Fare, Age, color = &quot;fill&quot;)) +
-  geom_line()</code></pre>
-<p><img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 </div>
 
