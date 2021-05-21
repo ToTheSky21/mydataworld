@@ -9,14 +9,17 @@ tags: []
 ---
 # Titanic (titanic_train) Data Visualization
 *Short story behind the data sets
+
 The sinking of the Titanic is one of the most infamous shipwrecks in history.
 
 On April 15, 1912, during her maiden voyage, the widely considered “unsinkable” RMS Titanic sank after colliding with an iceberg. Unfortunately, there weren’t enough lifeboats for everyone onboard, resulting in the death of 1502 out of 2224 passengers and crew.
 
 * Data at a glance
+
 Titanic is an R package containing data sets,titanic_train and titanic_test. In this blog I will use titanic_train data sets that provides information on the fate of passengers on the fatal maiden voyage of the ocean liner "Titanic", including variables PassengerId, Survived, Pclass, Name, Sex, Age, SibSp, Parch, Ticket, Fare, Cabin, and Embarked.
 
-* Data Analysis 
+* Data Analysis
+
 In this blog I will perform some exploratory data analysis and visualization using ggplot. 
 ```{r}
 library(titanic)
@@ -26,12 +29,15 @@ titanic_train
 * Here the variable Survived describes Passenger Survival Indicator.I will create a histogram to show the count of Passenger Survived according to their Sex.
 ```{r warning= FALSE, echo= FALSE}
 library(ggplot2)
-ggplot(titanic_train, aes(x = Survived, fill = Sex)) +
-  geom_bar(position = "dodge", alpha = 0.6) +
+library(dplyr)
+total_survived <- titanic_train %>%
+filter(Survived == 1)
+ggplot(data = total_survived, mapping = aes(x = Survived , fill = Sex)) +
+  geom_bar( position = "dodge", alpha = 0.6) +
   labs(title = "Passenger Survived by Sex")
 ```
 ## Categorical data visualization for variable Pclass and Age
-* I will plot class of passengers according to their age in years.
+* I will plot class of passengers (1st = Upper, 2nd = Middle, 3rd = Lower) according to their age in years in a scatter plot.
 ```{r warning=FALSE, message=FALSE, echo= FALSE}
 library(ggplot2)
 ggplot(titanic_train, aes(Pclass, Age)) +
@@ -74,10 +80,15 @@ ggplot(titanic_train, aes(x = Fare)) +
     title = "Amounts of Passenger Fare"
   )
 ```
-### Numerical data visualization for variable SibSp and Parch
-* Over here the variable SibSp presents the Number of Siblings/Spouses Aboard and Parch represents the Number of Parents/Children Aboard.I will plot these variables and try to observe the finding.
+### Numerical data visualization for variable Fare and Survived
+* Over here I will plot the numerical variable Fare with categorical variable Survived and try to observe the finding if any.
 ```{r warning=FALSE, message=FALSE, echo= FALSE}
-ggplot(titanic_train, aes(x = SibSp, y = Parch, color = Sex)) +
-  geom_point(position = "jitter", alpha = 0.6) + facet_wrap(~Sex, nrow = 2) 
+ggplot(titanic_train, aes(x = Fare, fill = Survived)) +
+  geom_density(position = "jitter", alpha = 0.6) + facet_wrap(~Survived, nrow = 2) +
+  ggtitle("Survival rates by Fare")
 ```
+# >>Important findings and issues when creating this first blog of mine
 
+* The histogram by the categorical data visualization for variable Survived according to sex depicts that the number of survived male is almost double of survived female.
+* From the scatter plot of another categorical data visualization for variable Pclass and Age shows that lower class passenger lies mostly between the age group of 15 to 40. 
+* The density of Survived does not slightly depend on fare.  

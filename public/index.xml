@@ -13,9 +13,10 @@
       <pubDate>Thu, 20 May 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/05/20/assignment-a01/</guid>
-      <description>Titanic (titanic_train) Data Visualization *Short story behind the data sets The sinking of the Titanic is one of the most infamous shipwrecks in history.
+      <description>Titanic (titanic_train) Data Visualization *Short story behind the data sets
+The sinking of the Titanic is one of the most infamous shipwrecks in history.
 On April 15, 1912, during her maiden voyage, the widely considered “unsinkable” RMS Titanic sank after colliding with an iceberg. Unfortunately, there weren’t enough lifeboats for everyone onboard, resulting in the death of 1502 out of 2224 passengers and crew.
- Data at a glance Titanic is an R package containing data sets,titanic_train and titanic_test.</description>
+ Data at a glance  Titanic is an R package containing data sets,titanic_train and titanic_test.</description>
     </item>
     
     <item>
@@ -42,7 +43,7 @@ On April 15, 1912, during her maiden voyage, the widely considered “unsinkable
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       
       <guid>/about/</guid>
-      <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
+      <description>I&amp;rsquo;m learning how to analyze data using R statistical programming language along with other relevant tools and environments as an MBA student,interests on the Business analysis courses. I&amp;rsquo;m really interested and exited to work with this new elements as my first blog site.I strongly believe my enthusiasm will help me to reach out my goal in this new journey.</description>
     </item>
     
   </channel>
