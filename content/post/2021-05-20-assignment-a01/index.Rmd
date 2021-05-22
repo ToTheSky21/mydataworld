@@ -8,7 +8,7 @@ categories:
 tags: []
 ---
 # Titanic (titanic_train) Data Visualization
-*Short story behind the data sets
+* Short story behind the data sets
 
 The sinking of the Titanic is one of the most infamous shipwrecks in history.
 
@@ -21,7 +21,7 @@ Titanic is an R package containing data sets,titanic_train and titanic_test. In 
 * Data Analysis
 
 In this blog I will perform some exploratory data analysis and visualization using ggplot. 
-```{r}
+```{r warning= FALSE, echo= FALSE, message=FALSE}
 library(titanic)
 titanic_train
 ```
@@ -87,7 +87,7 @@ ggplot(titanic_train, aes(x = Fare, fill = Survived)) +
   geom_density(position = "jitter", alpha = 0.6) + facet_wrap(~Survived, nrow = 2) +
   ggtitle("Survival rates by Fare")
 ```
-# >>Important findings and issues when creating this first blog of mine
+### Important findings and issues when creating this first blog of mine
 
 * The histogram by the categorical data visualization for variable Survived according to sex depicts that the number of survived male is almost double of survived female.
 * From the scatter plot of another categorical data visualization for variable Pclass and Age shows that lower class passenger lies mostly between the age group of 15 to 40. 

@@ -78,7 +78,9 @@
 
 <div id="titanic-titanic_train-data-visualization" class="section level1">
 <h1>Titanic (titanic_train) Data Visualization</h1>
-<p>*Short story behind the data sets</p>
+<ul>
+<li>Short story behind the data sets</li>
+</ul>
 <p>The sinking of the Titanic is one of the most infamous shipwrecks in history.</p>
 <p>On April 15, 1912, during her maiden voyage, the widely considered “unsinkable” RMS Titanic sank after colliding with an iceberg. Unfortunately, there weren’t enough lifeboats for everyone onboard, resulting in the death of 1502 out of 2224 passengers and crew.</p>
 <ul>
@@ -89,8 +91,6 @@
 <li>Data Analysis</li>
 </ul>
 <p>In this blog I will perform some exploratory data analysis and visualization using ggplot.</p>
-<pre class="r"><code>library(titanic)
-titanic_train</code></pre>
 <pre><code>##     PassengerId Survived Pclass
 ## 1             1        0      3
 ## 2             2        1      1
@@ -3662,26 +3662,30 @@ titanic_train</code></pre>
 <div id="categorical-data-visualization-for-variable-survived" class="section level2">
 <h2>Categorical data visualization for variable Survived</h2>
 <ul>
-<li><p>Here the variable Survived describes Passenger Survival Indicator.I will create a histogram to show the count of Passenger Survived according to their Sex.
+<li>Here the variable Survived describes Passenger Survival Indicator.I will create a histogram to show the count of Passenger Survived according to their Sex.
 <img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
-## Categorical data visualization for variable Pclass and Age</p></li>
-<li><p>I will plot class of passengers (1st = Upper, 2nd = Middle, 3rd = Lower) according to their age in years in a scatter plot.
+## Categorical data visualization for variable Pclass and Age</li>
+<li>I will plot class of passengers (1st = Upper, 2nd = Middle, 3rd = Lower) according to their age in years in a scatter plot.
 <img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-### Numerical data visualization for variable Fare</p></li>
-<li><p>Here the variable Fare means Passenger Fare, which is a numerical, discrete variable.In this visualization I will show the histogram, and some measures of numerical distribution.<br />
-<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p></li>
-<li><p>Now, I will fill this numerical variable with the categorical variable, Pclass
+### Numerical data visualization for variable Fare</li>
+<li>Here the variable Fare means Passenger Fare, which is a numerical, discrete variable.In this visualization I will show the histogram, and some measures of numerical distribution.<br />
+<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></li>
+<li>Now, I will fill this numerical variable with the categorical variable, Pclass
 that describes Passenger Class, to understand the relation with these two variables.
-<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p></li>
-<li><p>Over here I will show the density plot for the variable Fare that describes Passenger Fare and is a numerical variable of discrete data type.
+<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></li>
+<li>Over here I will show the density plot for the variable Fare that describes Passenger Fare and is a numerical variable of discrete data type.
 <img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-### Numerical data visualization for variable Fare and Survived</p></li>
-<li><p>Over here I will plot the numerical variable Fare with categorical variable Survived and try to observe the finding if any.
-<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-7-1.png" width="672" />
-# &gt;&gt;Important findings and issues when creating this first blog of mine</p></li>
-<li><p>The histogram by the categorical data visualization for variable Survived according to sex depicts that the number of survived male is almost double of survived female.</p></li>
-<li><p>From the scatter plot of another categorical data visualization for variable Pclass and Age shows that lower class passenger lies mostly between the age group of 15 to 40.</p></li>
-<li><p>The density of Survived does not slightly depend on fare.</p></li>
+### Numerical data visualization for variable Fare and Survived</li>
+<li>Over here I will plot the numerical variable Fare with categorical variable Survived and try to observe the finding if any.
+<img src="/2021/05/20/assignment-a01/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></li>
+<li><blockquote>
+<blockquote>
+<p>Important findings and issues when creating this first blog of mine&lt;&lt;</p>
+</blockquote>
+</blockquote></li>
+<li>The histogram by the categorical data visualization for variable Survived according to sex depicts that the number of survived male is almost double of survived female.</li>
+<li>From the scatter plot of another categorical data visualization for variable Pclass and Age shows that lower class passenger lies mostly between the age group of 15 to 40.</li>
+<li>The density of Survived does not slightly depend on fare.</li>
 </ul>
 </div>
 </div>
