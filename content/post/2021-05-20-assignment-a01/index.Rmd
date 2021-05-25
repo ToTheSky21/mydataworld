@@ -23,7 +23,7 @@ Titanic is an R package containing data sets,titanic_train and titanic_test. In 
 In this blog I will perform some exploratory data analysis and visualization using ggplot. 
 ```{r warning= FALSE, echo= FALSE, message=FALSE}
 library(titanic)
-titanic_train
+head(titanic_train)
 ```
 ## Categorical data visualization for variable Survived
 * Here the variable Survived describes Passenger Survival Indicator.I will create a histogram to show the count of Passenger Survived according to their Sex.
