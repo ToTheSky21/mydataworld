@@ -6,7 +6,16 @@
     <description>Recent content in Tidyverse on Tarana-Fundamentals of Data Analystics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/tidyverse/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/tidyverse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Assignment A02: TIDYVERSE</title>
+      <link>/2021/05/26/assignment-a02-tidyverse/</link>
+      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/05/26/assignment-a02-tidyverse/</guid>
+      <description>## # A tibble: 6 x 13 ## age anaemia creatinine_phosphok… diabetes ejection_fracti… high_blood_press… ## &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; ## 1 75 0 582 0 20 1 ## 2 55 0 7861 0 38 0 ## 3 65 0 146 0 20 0 ## 4 50 1 111 0 20 0 ## 5 65 1 160 1 20 0 ## 6 90 1 47 0 40 1 ## # … with 7 more variables: platelets &amp;lt;dbl&amp;gt;, serum_creatinine &amp;lt;dbl&amp;gt;, ## # serum_sodium &amp;lt;dbl&amp;gt;, sex &amp;lt;dbl&amp;gt;, smoking &amp;lt;dbl&amp;gt;, time &amp;lt;dbl&amp;gt;, DEATH_EVENT &amp;lt;dbl&amp;gt; One table verb functions ## # A tibble: 104 x 3 ## diabetes age serum_creatinine ## &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; ## 1 1 60 6.</description>
+    </item>
+    
     <item>
       <title>Data Wrangling using Tidyverse</title>
       <link>/2021/05/25/data-wrangling-using-tidyverse/</link>

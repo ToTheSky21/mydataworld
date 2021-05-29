@@ -1,0 +1,78 @@
+---
+title: 'Assignment A02: TIDYVERSE'
+author: R package build
+date: '2021-05-26'
+slug: assignment-a02-tidyverse
+categories:
+  - Tidyverse
+tags: []
+---
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+heartdisease <- read_csv("heart_failure_clinical_records_dataset.csv")
+#head(heart_failure_clinical_records_dataset)
+head(heartdisease)
+```
+## One table verb functions
+```{r warning=FALSE, message=FALSE}
+heartdisease %>%
+filter(diabetes == 1, age >= 50) %>%
+arrange(desc(serum_creatinine)) %>%
+  select(diabetes, age, serum_creatinine)
+```
+## two table verb functions
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(repr)
+library(tidyr)
+x15 <- read_csv("2015.csv")
+x16 <- read_csv("2016.csv")
+head(x15)
+head(x16)
+left_joined <- left_join(x15, x16, by = c("Country"))
+right_joined <- right_join(x15, x16, by = c("Country"))
+inner_joined <- inner_join(x15, x16, by = c("Country"))
+```
+## Grouping functions 
+```{r warning=FALSE, message=FALSE}
+Group <- heartdisease %>%
+group_by(age) %>%
+  summarise(mean_creatinine = mean(serum_creatinine))
+Group
+```
+## rowwise Grouping function
+```{r warning=FALSE, message=FALSE}
+heartdisease %>% 
+  rowwise() %>% 
+  mutate(m = min(c(high_blood_pressure, smoking)))
+```
+## Vector functions 
+```{r warning=FALSE, message=FALSE}
+filter(heartdisease, between(age, 50, 70))
+heartdisease %>% arrange(desc(time))
+```
+## Pivoting function 
+```{r warning=FALSE, message=FALSE}
+library(tidyr)
+x15 %>%
+pivot_longer(cols = c('Country', 'Region'), names_to = "A", values_to = "B")
+```
+## Pivoting function
+```{r warning=FALSE, message=FALSE}
+library(tidyr)
+heartdisease %>%
+pivot_wider(names_from = diabetes, values_from = ejection_fraction)
+```
+## Missing Value function
+```{r warning=FALSE, message=FALSE}
+heartdisease %>%
+  drop_na()
+```
+## Missing Value function
+```{r}
+heartdisease %>%
+ fill(sex)
+```
+ 
