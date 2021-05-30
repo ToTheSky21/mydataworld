@@ -7,21 +7,23 @@ categories:
   - Tidyverse
 tags: []
 ---
-```{r warning=FALSE, message=FALSE}
+For using one table verb functions,I have chosen heart failure clinical records dataset. Heart failure is a common event caused by CVDs and this dataset contains 12 features that can be used to predict mortality by heart failure. I have applied two functions only here.
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 library(tidyverse)
 heartdisease <- read_csv("heart_failure_clinical_records_dataset.csv")
 #head(heart_failure_clinical_records_dataset)
 head(heartdisease)
 ```
 ## One table verb functions
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 heartdisease %>%
 filter(diabetes == 1, age >= 50) %>%
 arrange(desc(serum_creatinine)) %>%
   select(diabetes, age, serum_creatinine)
 ```
 ## two table verb functions
-```{r warning=FALSE, message=FALSE}
+For using two table functions, I have use world happiness dataset for the year 2015 and 2016.The World Happiness Report is a landmark survey of the state of global happiness.This data set contains following columns: Country,Region, Happiness Rank, Happiness Score, GDP per Capita, Family, Life Expectancy, Freedom, Generosity, Trust(Government Corruption), Generosity, Dystopia Residual etc.
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
@@ -36,43 +38,44 @@ right_joined <- right_join(x15, x16, by = c("Country"))
 inner_joined <- inner_join(x15, x16, by = c("Country"))
 ```
 ## Grouping functions 
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 Group <- heartdisease %>%
 group_by(age) %>%
   summarise(mean_creatinine = mean(serum_creatinine))
 Group
 ```
 ## rowwise Grouping function
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 heartdisease %>% 
   rowwise() %>% 
   mutate(m = min(c(high_blood_pressure, smoking)))
 ```
 ## Vector functions 
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 filter(heartdisease, between(age, 50, 70))
 heartdisease %>% arrange(desc(time))
 ```
 ## Pivoting function 
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 library(tidyr)
 x15 %>%
 pivot_longer(cols = c('Country', 'Region'), names_to = "A", values_to = "B")
 ```
 ## Pivoting function
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 library(tidyr)
 heartdisease %>%
 pivot_wider(names_from = diabetes, values_from = ejection_fraction)
 ```
 ## Missing Value function
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 heartdisease %>%
   drop_na()
 ```
 ## Missing Value function
-```{r}
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 heartdisease %>%
  fill(sex)
 ```
- 
+## Narrative 
+I have found both the datasets, heart failure clinical records dataset and happiness dataset of Kaggle interesting. I hope to learn more to analyze how these datasets are meaningful by the end of this course. While doing this assignment of Tidyverse, I have found the Group_by functions of grouping most interesting compared to other functions.
