@@ -1,0 +1,80 @@
+---
+title: Data Recode Assignment
+author: R package build
+date: '2021-06-01'
+slug: data-recode-assignment
+categories:
+  - Tidyverse
+tags: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="import-and-transform-religion-income.csv" class="section level2">
+<h2>Import and Transform Religion-income.csv</h2>
+<pre class="r"><code>library(readxl)
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(tidyr)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.1.2     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>rel_inc &lt;- read_excel(&quot;relig-income.xlsx&quot;)
+rel_inc_long &lt;- rel_inc %&gt;%
+  rename( 
+    religion = `Religious tradition`, 
+    n = `Sample Size` 
+  ) %&gt;%
+  pivot_longer( 
+    cols = -c(religion, n),   # all but religion and n 
+    names_to = &quot;income&quot;,  
+    values_to = &quot;proportion&quot; 
+  ) %&gt;%
+  mutate(frequency = round(proportion * n))</code></pre>
+</div>
+<div id="visualizing-using-barplot" class="section level2">
+<h2>Visualizing using Barplot</h2>
+<pre class="r"><code>rel_inc_long &lt;- rel_inc_long %&gt;%
+  mutate(religion = case_when(
+    religion == &quot;Evangelical Protestant&quot;           ~ &quot;Ev. Protestant&quot;,
+    religion == &quot;Historically Black Protestant&quot;    ~ &quot;Hist. Black Protestant&quot;,
+    religion == &#39;Unaffiliated (religious &quot;nones&quot;)&#39; ~ &quot;Unaffiliated&quot;,
+    TRUE                                           ~ religion
+  ))
+rel_inc_long &lt;- rel_inc_long %&gt;%
+  mutate(religion = fct_rev(religion))
+
+ggplot(rel_inc_long, aes(y = religion, x = frequency, fill = income)) +
+  geom_col()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(rel_inc_long, aes(y = religion, x = frequency, fill = income)) +
+  geom_col(position = &quot;fill&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-2.png" width="672" />
+## Change theme of the plot</p>
+<pre class="r"><code>ggplot(rel_inc_long, aes(y = religion, x = frequency, fill = income)) +
+  geom_col(position = &quot;fill&quot;) +
+  scale_fill_viridis_d() +
+  theme_minimal() +
+  theme(legend.position = &quot;bottom&quot;) +
+    guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
+labs(
+    x = &quot;Proportion&quot;, y = &quot;&quot;, 
+    title = &quot;Income distribution by religious group&quot;, 
+    subtitle = &quot;Source: Pew Research Center, Religious Landscape Study&quot;, 
+    fill = &quot;Income&quot; 
+    )</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>

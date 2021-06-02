@@ -1,8 +1,8 @@
 ---
-title: untitled
+title: Data Import Assignment
 author: R package build
 date: '2021-06-01'
-slug: untitled
+slug: data-import-assignment
 categories:
   - Tidyverse
 tags: []
@@ -80,4 +80,3 @@ fav_food <- read_excel("favourite-food.xlsx", na = c("N/A", "99999")) %>%
   )
 fav_food
 ```
-
