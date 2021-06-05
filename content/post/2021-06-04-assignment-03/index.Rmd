@@ -8,23 +8,101 @@ categories:
 tags: []
 ---
 ## Importing lego_sales.csv file
-```{r}
+```{r message=FALSE, echo=FALSE}
 library(tidyverse)
 lego <- read_csv(file = "lego_sales.csv")
 head(lego)
 ```
-## What are the three most common first names of customers?
+## 1. What are the three most common first names of customers?
 The three most common first names of customers are Jackson, Jacob, Joseph & Michael which is calculated by counting how frequently their first_name are listed in the data set, respectively 13, 11, 11 & 10.  
 ```{r}
-library(plyr)
-count(lego, first_name) %>%
-  arrange(desc(freq))
+library(dplyr)
+first_name_sorted <- lego %>% count(first_name, sort=TRUE)
+head(first_name_sorted)
 ```
-## What are the three most common themes of lego sets purchased?
+## 2. What are the three most common themes of lego sets purchased?
+The three most common themes of lego sets purchased are Star Wars, Nexo Knights, 
+Gear and Mixels with the order as 75, 64, 55 & 55.
 ```{r}
-library(plyr)
-count(lego, 'theme') %>%
-  arrange(desc(freq))
-  
+theme_sorted <- lego %>% count(theme, sort=TRUE)
+head(theme_sorted)  
+```
+## 3. Among the most common theme of lego sets purchased, what is the most common subtheme?
+The most common subtheme among the most common theme of lego sets purchased are Ultimate, Series 9 & Series 7 which is calculated by the following functions:
+```{r}
+most_frequent_theme_df <- filter(lego, theme == "Star Wars" | theme == "Nexo Knights" | theme ==  "Gear" | theme == "Mixels")
+head(most_frequent_theme_df)
+sub_theme_sorted <- most_frequent_theme_df %>% count(subtheme, sort=TRUE)
+head(sub_theme_sorted)
+```
+## 4.Create a new variable called age_group and group the ages into the following categories: “18 and under”, “19 - 25”, “26 - 35”, “36 - 50”, “51 and over”. Be sure to save the updated data set so you can use the new variable in other questions.
+A new variable called age_group is created using the mutate function as follows:
+```{r}
+age_group <- lego %>% mutate(age_group = case_when(age <= 18 ~ '18 and under', age >= 19  & age <= 25 ~ '19 - 25', age >= 26 & age <= 35 ~ '26 - 35', age >= 36  & age <= 50 ~ '36 - 50', age >= 51 ~ '51 and over'))
+head(age_group)
+```
+## 5.What is the probability a randomly selected customer
+a) is in the 19 - 25 age group?
+The probability a randomly selected customer from the 19 - 25 age group is 0.2080645.
+```{r}
+age_group_count <- age_group %>% 
+  count(age_group) 
+head(age_group_count)
+total_lego <- sum(age_group_count[, 'n'])
+total_lego
+prob_19_25 <- 129/620
+prob_19_25
+```
+b) is in the 19 - 25 age group and purchased a Duplo theme set?
+The probability a randomly selected customer who falls under the 19 - 25 age group and purchased a Duplo theme set is 0.01174558.
+```{r}
+duplo_theme <- filter(lego, theme == "Duplo")
+duplo_theme_count <- duplo_theme %>% 
+  count(theme)
+duplo_theme_count
+prob_duplo <- 35/620
+prob_19_25_duplo <- prob_19_25*prob_duplo
+prob_19_25_duplo
+```
+is in the 19 - 25 age group given they purchased a Duplo theme set?
+The probability a randomly selected customer who falls under the 19 - 25 age group given that they purchased a Duplo theme set is 0.2080645 which is slighly higher than with it.
+```{r}
+prob_19_25_given_duplo <- prob_19_25_duplo/prob_duplo
+prob_19_25_given_duplo
+```
+
+## 6.Which age group has purchased the largest number of lego sets? How many did they purchase?
+The age group 36 - 50 has purchased 313 lego sets which is the largest.
+```{r}
+age_group %>% 
+group_by(age_group) %>% 
+summarise(quantity_by_group = sum(quantity))
+```
+## 7.Which age group has spent the most money on legos? How much did they spend?
+The age group 36 - 50 has spent $6641.84 on legos and calculated using group_by & summarise functions as follows:
+```{r}
+age_group %>% 
+group_by(age_group) %>% 
+summarise(spent_by_group = sum(us_price))
+```
+## 8.Come up with a question you want to answer using this data, and write it down. Then, create a data visualization that answers the question, and briefly explain how your visualization answers the question.
+Is there any effects of the age group of purchasing logo theme, that is, are the same ages people like the same types of theme when purchased the logo? From the graph it is observed that there is no effect of age group for choosing the logo theme. All age groups preferred advanced models theme most.
+```{r}
+library(tidyverse)
+library(ggplot2)
+age_group <- lego %>% mutate(age_group = case_when(age <= 18 ~ '18 and under', age >= 19  & age <= 25 ~ '19 - 25', age >= 26 & age <= 35 ~ '26 - 35', age >= 36  & age <= 50 ~ '36 - 50', age >= 51 ~ '51 and over'))
+ggplot(age_group, mapping = aes(x = age_group, fill = theme)) +
+  geom_bar() 
+```
+## 9.Add one element to the plot from the previous exercise to change the look of the plot without changing the underlying data.
+
+In this case I have added the tittle of the graph only with fill position to visualize a bit clearly than before. I hope to learn using more visualization at the end of the course in this Summer so to prove my creativity.
+```{r}
+library(tidyverse)
+library(ggplot2)
+age_group <- lego %>% mutate(age_group = case_when(age <= 18 ~ '18 and under', age >= 19  & age <= 25 ~ '19 - 25', age >= 26 & age <= 35 ~ '26 - 35', age >= 36  & age <= 50 ~ '36 - 50', age >= 51 ~ '51 and over'))
+ggplot(age_group, mapping = aes(x = age_group, fill = theme)) +
+  geom_bar(position = "fill") +
+  labs(title = "Theme of lego set purchased by age group")
 ```
 

@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Tarana-Fundamentals of Data Analystics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Assignment 03</title>
+      <link>/2021/06/04/assignment-03/</link>
+      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/06/04/assignment-03/</guid>
+      <description>Importing lego_sales.csv file ## # A tibble: 6 x 14 ## first_name last_name age phone_number set_id number theme subtheme year ## &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; ## 1 Kimberly Beckstead 24 216-555-2549 24701 76062 DC Comi… Mighty M… 2018 ## 2 Neel Garvin 35 819-555-3189 25626 70595 Ninjago Rise of … 2018 ## 3 Neel Garvin 35 819-555-3189 24665 21031 Archite… &amp;lt;NA&amp;gt; 2018 ## 4 Chelsea Bouchard 41 &amp;lt;NA&amp;gt; 24695 31048 Creator &amp;lt;NA&amp;gt; 2018 ## 5 Chelsea Bouchard 41 &amp;lt;NA&amp;gt; 25626 70595 Ninjago Rise of … 2018 ## 6 Chelsea Bouchard 41 &amp;lt;NA&amp;gt; 24721 10831 Duplo &amp;lt;NA&amp;gt; 2018 ## # … with 5 more variables: name &amp;lt;chr&amp;gt;, pieces &amp;lt;dbl&amp;gt;, us_price &amp;lt;dbl&amp;gt;, ## # image_url &amp;lt;chr&amp;gt;, quantity &amp;lt;dbl&amp;gt;  1.</description>
+    </item>
+    
     <item>
       <title>Data Import Assignment</title>
       <link>/2021/06/01/data-import-assignment/</link>
