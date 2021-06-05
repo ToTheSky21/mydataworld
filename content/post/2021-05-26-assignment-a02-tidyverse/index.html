@@ -6,12 +6,19 @@ slug: assignment-a02-tidyverse
 categories:
   - Tidyverse
 tags: []
+output:
+   html_document:
+     code_folding: show
 ---
 
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
 <p>For using one table verb functions,I have chosen heart failure clinical records dataset. Heart failure is a common event caused by CVDs and this dataset contains 12 features that can be used to predict mortality by heart failure. I have applied two functions only here.</p>
+<pre class="r fold-show"><code>library(tidyverse)
+heartdisease &lt;- read_csv(&quot;heart_failure_clinical_records_dataset.csv&quot;)
+#head(heart_failure_clinical_records_dataset)
+head(heartdisease)</code></pre>
 <pre><code>## # A tibble: 6 x 13
 ##     age anaemia creatinine_phosphok… diabetes ejection_fracti… high_blood_press…
 ##   &lt;dbl&gt;   &lt;dbl&gt;                &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;             &lt;dbl&gt;
@@ -25,6 +32,10 @@ tags: []
 ## #   serum_sodium &lt;dbl&gt;, sex &lt;dbl&gt;, smoking &lt;dbl&gt;, time &lt;dbl&gt;, DEATH_EVENT &lt;dbl&gt;</code></pre>
 <div id="one-table-verb-functions" class="section level2">
 <h2>One table verb functions</h2>
+<pre class="r fold-show"><code>heartdisease %&gt;%
+filter(diabetes == 1, age &gt;= 50) %&gt;%
+arrange(desc(serum_creatinine)) %&gt;%
+  select(diabetes, age, serum_creatinine)</code></pre>
 <pre><code>## # A tibble: 104 x 3
 ##    diabetes   age serum_creatinine
 ##       &lt;dbl&gt; &lt;dbl&gt;            &lt;dbl&gt;
@@ -43,6 +54,14 @@ tags: []
 <div id="two-table-verb-functions" class="section level2">
 <h2>two table verb functions</h2>
 <p>For using two table functions, I have use world happiness dataset for the year 2015 and 2016.The World Happiness Report is a landmark survey of the state of global happiness.This data set contains following columns: Country,Region, Happiness Rank, Happiness Score, GDP per Capita, Family, Life Expectancy, Freedom, Generosity, Trust(Government Corruption), Generosity, Dystopia Residual etc.</p>
+<pre class="r fold-show"><code>library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(repr)
+library(tidyr)
+x15 &lt;- read_csv(&quot;2015.csv&quot;)
+x16 &lt;- read_csv(&quot;2016.csv&quot;)
+head(x15)</code></pre>
 <pre><code>## # A tibble: 6 x 12
 ##   Country     Region         `Happiness Rank` `Happiness Score` `Standard Error`
 ##   &lt;chr&gt;       &lt;chr&gt;                     &lt;dbl&gt;             &lt;dbl&gt;            &lt;dbl&gt;
@@ -56,6 +75,7 @@ tags: []
 ## #   Health (Life Expectancy) &lt;dbl&gt;, Freedom &lt;dbl&gt;,
 ## #   Trust (Government Corruption) &lt;dbl&gt;, Generosity &lt;dbl&gt;,
 ## #   Dystopia Residual &lt;dbl&gt;</code></pre>
+<pre class="r fold-show"><code>head(x16)</code></pre>
 <pre><code>## # A tibble: 6 x 13
 ##   Country    Region      `Happiness Rank` `Happiness Scor… `Lower Confidence In…
 ##   &lt;chr&gt;      &lt;chr&gt;                  &lt;dbl&gt;            &lt;dbl&gt;                 &lt;dbl&gt;
@@ -70,9 +90,16 @@ tags: []
 ## #   Health (Life Expectancy) &lt;dbl&gt;, Freedom &lt;dbl&gt;,
 ## #   Trust (Government Corruption) &lt;dbl&gt;, Generosity &lt;dbl&gt;,
 ## #   Dystopia Residual &lt;dbl&gt;</code></pre>
+<pre class="r fold-show"><code>left_joined &lt;- left_join(x15, x16, by = c(&quot;Country&quot;))
+right_joined &lt;- right_join(x15, x16, by = c(&quot;Country&quot;))
+inner_joined &lt;- inner_join(x15, x16, by = c(&quot;Country&quot;))</code></pre>
 </div>
 <div id="grouping-functions" class="section level2">
 <h2>Grouping functions</h2>
+<pre class="r fold-show"><code>Group &lt;- heartdisease %&gt;%
+group_by(age) %&gt;%
+  summarise(mean_creatinine = mean(serum_creatinine))
+Group</code></pre>
 <pre><code>## # A tibble: 47 x 2
 ##      age mean_creatinine
 ##    &lt;dbl&gt;           &lt;dbl&gt;
@@ -90,6 +117,9 @@ tags: []
 </div>
 <div id="rowwise-grouping-function" class="section level2">
 <h2>rowwise Grouping function</h2>
+<pre class="r fold-show"><code>heartdisease %&gt;% 
+  rowwise() %&gt;% 
+  mutate(m = min(c(high_blood_pressure, smoking)))</code></pre>
 <pre><code>## # A tibble: 299 x 14
 ## # Rowwise: 
 ##      age anaemia creatinine_phospho… diabetes ejection_fracti… high_blood_press…
@@ -110,6 +140,7 @@ tags: []
 </div>
 <div id="vector-functions" class="section level2">
 <h2>Vector functions</h2>
+<pre class="r fold-show"><code>filter(heartdisease, between(age, 50, 70))</code></pre>
 <pre><code>## # A tibble: 200 x 13
 ##      age anaemia creatinine_phospho… diabetes ejection_fracti… high_blood_press…
 ##    &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;             &lt;dbl&gt;
@@ -126,6 +157,7 @@ tags: []
 ## # … with 190 more rows, and 7 more variables: platelets &lt;dbl&gt;,
 ## #   serum_creatinine &lt;dbl&gt;, serum_sodium &lt;dbl&gt;, sex &lt;dbl&gt;, smoking &lt;dbl&gt;,
 ## #   time &lt;dbl&gt;, DEATH_EVENT &lt;dbl&gt;</code></pre>
+<pre class="r fold-show"><code>heartdisease %&gt;% arrange(desc(time))</code></pre>
 <pre><code>## # A tibble: 299 x 13
 ##      age anaemia creatinine_phospho… diabetes ejection_fracti… high_blood_press…
 ##    &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;             &lt;dbl&gt;
@@ -145,6 +177,9 @@ tags: []
 </div>
 <div id="pivoting-function" class="section level2">
 <h2>Pivoting function</h2>
+<pre class="r fold-show"><code>library(tidyr)
+x15 %&gt;%
+pivot_longer(cols = c(&#39;Country&#39;, &#39;Region&#39;), names_to = &quot;A&quot;, values_to = &quot;B&quot;)</code></pre>
 <pre><code>## # A tibble: 316 x 12
 ##    `Happiness Rank` `Happiness Score` `Standard Error` `Economy (GDP per… Family
 ##               &lt;dbl&gt;             &lt;dbl&gt;            &lt;dbl&gt;              &lt;dbl&gt;  &lt;dbl&gt;
@@ -164,6 +199,9 @@ tags: []
 </div>
 <div id="pivoting-function-1" class="section level2">
 <h2>Pivoting function</h2>
+<pre class="r fold-show"><code>library(tidyr)
+heartdisease %&gt;%
+pivot_wider(names_from = diabetes, values_from = ejection_fraction)</code></pre>
 <pre><code>## # A tibble: 299 x 13
 ##      age anaemia creatinine_phospho… high_blood_pres… platelets serum_creatinine
 ##    &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;
@@ -182,6 +220,8 @@ tags: []
 </div>
 <div id="missing-value-function" class="section level2">
 <h2>Missing Value function</h2>
+<pre class="r fold-show"><code>heartdisease %&gt;%
+  drop_na()</code></pre>
 <pre><code>## # A tibble: 299 x 13
 ##      age anaemia creatinine_phospho… diabetes ejection_fracti… high_blood_press…
 ##    &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;             &lt;dbl&gt;
@@ -201,6 +241,8 @@ tags: []
 </div>
 <div id="missing-value-function-1" class="section level2">
 <h2>Missing Value function</h2>
+<pre class="r fold-show"><code>heartdisease %&gt;%
+ fill(sex)</code></pre>
 <pre><code>## # A tibble: 299 x 13
 ##      age anaemia creatinine_phospho… diabetes ejection_fracti… high_blood_press…
 ##    &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;             &lt;dbl&gt;
