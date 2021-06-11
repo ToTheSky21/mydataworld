@@ -1,0 +1,14 @@
+name: mydataworld
+title:
+username:
+account: taranaislam
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4243495
+bundleId: 4693829
+url: https://taranaislam.shinyapps.io/mydataworld/
+when: 1623186001.9158
+lastSyncTime: 1623186001.91581
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|.Rprofile|config.yaml|index.Rmd|layouts/.DS_Store|layouts/shortcodes/.DS_Store|layouts/shortcodes/blogdown/postref.html|netlify.toml|R/build.R|R/build2.R|Shiny webpage.R|static/.gitkeep
