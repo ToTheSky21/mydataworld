@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shiny on Tarana-Fundamentals of Data Analystics</title>
+    <link>/categories/shiny/</link>
+    <description>Recent content in shiny on Tarana-Fundamentals of Data Analystics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/shiny/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Total funded expense actuals by agency name</title>
+      <link>/2021/06/10/total-funded-expense-actuals-by-agency-name/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/06/10/total-funded-expense-actuals-by-agency-name/</guid>
+      <description>  Funded expense actuals by agency name from non-federal dataset of USA The small and simple interactive visualization represents the top five agency name those are funded by the actual expenses according to year 2015, 2016 &amp;amp; 2017.
+&amp;lt;iframe src=“https://taranaislam.shinyapps.io/mydataworld/”, height = “800” width = “100%” frameborder = “no”&amp;gt;
+ </description>
+    </item>
+    
+  </channel>
+</rss>

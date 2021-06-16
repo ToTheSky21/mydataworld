@@ -6,7 +6,28 @@
     <description>Recent content in Posts on Tarana-Fundamentals of Data Analystics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fiting and Interpreting Models</title>
+      <link>/2021/06/15/fiting-and-interpreting-models/</link>
+      <pubDate>Tue, 15 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/06/15/fiting-and-interpreting-models/</guid>
+      <description>Import Libraries  # Models with numerical explanatory variables  Data: Paris Paintings pp &amp;lt;- read_csv(&amp;quot;paris-paintings.csv&amp;quot;, na = c(&amp;quot;n/a&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;NA&amp;quot;))  Number of observations: 3393 Number of variables: 61   Goal: Predict height from width ## Step 1: Specify model
+## Linear Regression Model Specification (regression)  Step 2: Set model fittung “engine” linear_reg() %&amp;gt;% set_engine(&amp;quot;lm&amp;quot;) #linear model  Step 3: Fit model and estimate parameters ## # A tibble: 2 x 5 ## term estimate std.</description>
+    </item>
+    
+    <item>
+      <title>Total funded expense actuals by agency name</title>
+      <link>/2021/06/10/total-funded-expense-actuals-by-agency-name/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/06/10/total-funded-expense-actuals-by-agency-name/</guid>
+      <description>  Funded expense actuals by agency name from non-federal dataset of USA The small and simple interactive visualization represents the top five agency name those are funded by the actual expenses according to year 2015, 2016 &amp;amp; 2017.
+&amp;lt;iframe src=“https://taranaislam.shinyapps.io/mydataworld/”, height = “800” width = “100%” frameborder = “no”&amp;gt;
+ </description>
+    </item>
+    
     <item>
       <title>Assignment 03</title>
       <link>/2021/06/04/assignment-03/</link>
